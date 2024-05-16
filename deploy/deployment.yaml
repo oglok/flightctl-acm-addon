@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flightctl-acm-addon
+  namespace: flightctl-acm-addon
+  labels:
+    app: flightctl-acm-addon
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flightctl-acm-addon
+  template:
+    metadata:
+      labels:
+        app: flightctl-acm-addon
+    spec:
+      containers:
+      - name: flightctl-acm-addon
+        command: ["sleep"]
+        args: ["infinity"] 
+        image: localhost:5001/flightctl/flightctl-acm-addon:latest
+        imagePullPolicy: Always
+        # env:
+        # - name: FLIGHTCTL_ACM_ADDON_NAMESPACE
+        #   valueFrom:
+        #     fieldRef:
+        #       fieldPath: metadata.namespace
+        # - name: FLIGHTCTL_ACM_ADDON_NAME
+        #   valueFrom:
+        #     fieldRef:
+        #       fieldPath: metadata.name
+        # - name: FLIGHTCTL_ACM_ADDON_APISERVER
+        #   value: https://api.flightctl.edge-devices.net
+        # - name: FLIGHTCTL_ACM_ADDON_CLIENT_CERTIFICATE_DATA
+        #   value: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJyVENDQVZTZ0F3SUJBZ0lJU0gxcFpQL0JCTnd3Q2dZSUtvWkl6ajBFQXdJd0RURUxNQWtHQTFVRUF4TUMKWTJFd0hoY05Nak14TWpFMU1USXlPREE0V2hjTk1qUXhNakUwTVRJeU9EQTVXakFjTVJvd0dBWURWUVFERXhGagpiR2xsYm5RdFpXNXliMnhzYldWdWREQlpNQk1HQnlxR1NNNDlBZ0VHQ0NxR1NNNDlBd0VIQTBJQUJNVjBaVkRjCkN5Q2IvWXlXZ0VsMmY4c3ZNQWlCVkVJN05palpIY0tIeUw0cG9TWEdrOUp5SUtZQ3MxdllqRk
